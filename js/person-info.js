@@ -24,6 +24,45 @@ var createContactObject = function(name, surname, phone, contact) {
     }
 }
 
+var renderContactsList = function () {
+    elResult.innerHTML = '';
+
+    //for each contact creating new element and adding to the list of html
+    // for(var i = 0; i < listOfInfos.length; i++) {
+        listOfInfos.forEach(function(listInfo){
+
+        // var Listli = document.createElement('li');
+        // Listli.classList.add('js-results__item', 'list-group-item');
+
+        var Listli = createElementFunc('li', 'js-results__item list-group-item');
+
+        // var elContactsFullName = document.createElement('div')
+        // elContactsFullName.classList.add('js-results__fullname')
+        // elContactsFullName.textContent = `${listInfo.name} ${listInfo.surname}`; in for loop we used to write listInfos[i] but with for each jus listInfo which stands for every contact of that array!!!
+
+        var elContactsFullName = createElementFunc('div', 'js-results__fullname', `${listInfo.name} ${listInfo.surname}`);
+        
+        // var elContactsRelationship = document.createElement('div')
+        // elContactsRelationship.classList.add('js-results__relationship', 'small')
+        // elContactsRelationship.textContent = listInfo.contact;
+
+        var elContactsRelationship = createElementFunc('div', 'js-results__relationship small', listInfo.contact)
+        
+        // var elContactsPhone = document.createElement('a')
+        // elContactsPhone.classList.add('js-results__phone-number')
+        // elContactsPhone.textContent = listInfo.phone;
+        
+        var elContactsPhone = createElementFunc('a', 'js-results__phone-number', listInfo.phone)
+        elContactsPhone.href = `tel: ${listInfo.phone}`;
+        
+        Listli.appendChild(elContactsFullName);
+        Listli.appendChild(elContactsRelationship);
+        Listli.appendChild(elContactsPhone);
+        
+        elResult.appendChild(Listli);
+    })   
+}
+
 // var isInputEmpty = function(input) {
 //     if(input === ''){
 //         return true;
@@ -31,6 +70,14 @@ var createContactObject = function(name, surname, phone, contact) {
 //         return false;
 //     }
 // }
+
+var clearInputValues = function() {
+    elNameInput.value = '';
+    elSurnameInput.value = '';
+    elNumInput.value = '';
+    elContactInput.value = '';
+}
+
 
 elInfoForm.addEventListener('submit', function(evt) {
     evt.preventDefault();
@@ -57,30 +104,9 @@ elInfoForm.addEventListener('submit', function(evt) {
 
     listOfInfos.push(createContactObject(name, surname, phone, contact));
 
-    elResult.innerHTML = '';
-
-    for(var i = 0; i < listOfInfos.length; i++) {
-        var Listli = document.createElement('li');
-        Listli.classList.add('js-results__item', 'list-group-item');
-
-        var elContactsFullName = document.createElement('div')
-        elContactsFullName.classList.add('js-results__fullname')
-        elContactsFullName.textContent = `${listOfInfos[i].name} ${listOfInfos[i].surname}`;
-        
-        var elContactsRelationship = document.createElement('div')
-        elContactsRelationship.classList.add('js-results__relationship', 'small')
-        elContactsRelationship.textContent = listOfInfos[i].contact;
-        
-        var elContactsPhone = document.createElement('a')
-        elContactsPhone.classList.add('js-results__phone-number')
-        elContactsPhone.textContent = listOfInfos[i].phone;
-        elContactsPhone.href = `tel: ${listOfInfos[i].phone}`;
-        
-        Listli.appendChild(elContactsFullName);
-        Listli.appendChild(elContactsRelationship);
-        Listli.appendChild(elContactsPhone);
-        
-        elResult.appendChild(Listli);        
-    }
+    renderContactsList();
+    clearInputValues();
+         
+    // }
 
 })
