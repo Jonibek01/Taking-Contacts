@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Starter</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <main>
+    <div class="container mt-3">
+      <h1 class="h3 p-4 text-center text-warning bg-dark">Contacts</h1>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-between mt-5">
+        <section class="col-md-5  mb-5 mb-md-0">
+          <h2 class="h4 mb-4 text-center">Add new contact</h2>
+          <form class="js-form-info" action="#" method="POST">
+
+            <div class="form-group">
+              <label for="person-name">First Name: </label>
+              <input class="form-control js-fname-input" type="name" id="person-name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="person-surname">Last Name: </label>
+              <input class="form-control js-surname-input" type="surname" id="person-surname" name="surname" required>
+            </div>
+            <div class="form-group">
+              <label for="person-num">Tel Numbe: </label>
+              <input class="form-control js-num-input" type="tel" id="person-num" name="number" min="7" required> 
+            </div>
+            <div class="form-group">
+              <label for="person-contact">Contact Inf:</label>
+              <input class="form-control js-contact-input" type="text" id="person-contact" name="contact" required>
+            </div>
+
+            <button class="btn btn-block js-send-btn btn-success" type="submit">Save</button>
+          </form>
+         
+        </section>
+
+        <section class="col-md-5">
+            <div class="alert alert-info"> <h5 class="text-center">List Of Person's Info</h5> 
+              <ol class="js-result list-group">
+              
+              </ol>
+            </section>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/utilis.js"></script>
+  <script src="js/person-info.js"></script>
+
+</body>
+</html>
